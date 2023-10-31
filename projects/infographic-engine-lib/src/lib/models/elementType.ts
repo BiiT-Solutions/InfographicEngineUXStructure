@@ -1,0 +1,15 @@
+export enum ElementType {
+  SVG = "SVG",
+  NESTED_SVG = "NESTED_SVG",
+  IMAGE = "IMAGE",
+  RECTANGLE = "RECTANGLE",
+  CIRCLE = "CIRCLE",
+  ELLIPSE = "ELLIPSE",
+  LINE = "LINE",
+  PATH = "PATH",
+  TEXT = "TEXT",
+  SCRIPT = "SCRIPT",
+  GAUGE = "GAUGE",
+  GRADIENT = "GRADIENT",
+  GRADIENT_STOP = "GRADIENT_STOP"
+}
