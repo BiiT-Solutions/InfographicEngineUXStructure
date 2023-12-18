@@ -31,22 +31,22 @@ export class InfographicService {
   ): Observable<GeneratedInfographic[]> {
     const httpParams: HttpParams = new HttpParams();
     if (form) {
-      httpParams.set('form', form);
+      httpParams.append('form', form);
     }
     if (version) {
-      httpParams.set('version', version.toString());
+      httpParams.append('version', version.toString());
     }
     if (createdBy) {
-      httpParams.set('createdBy', createdBy);
+      httpParams.append('createdBy', createdBy);
     }
     if (organization) {
-      httpParams.set('organization', organization.toString());
+      httpParams.append('organization', organization.toString());
     }
     if (from) {
-      httpParams.set('from', from.toISOString());
+      httpParams.append('from', from.toISOString());
     }
     if (to) {
-      httpParams.set('to', to.toISOString());
+      httpParams.append('to', to.toISOString());
     }
     return this.httpClient.get<GeneratedInfographic[]>(`${this.rootService.serverUrl}${InfographicService.ROOT_PATH}/find`, {params: httpParams});
   }
@@ -58,23 +58,23 @@ export class InfographicService {
   ): Observable<GeneratedInfographic> {
     const httpParams: HttpParams = new HttpParams();
     if (form) {
-      httpParams.set('form', form);
+      httpParams.append('form', form);
     }
     if (version) {
-      httpParams.set('version', version.toString());
+      httpParams.append('version', version.toString());
     }
     if (createdBy) {
-      httpParams.set('createdBy', createdBy);
+      httpParams.append('createdBy', createdBy);
     }
     if (organization) {
-      httpParams.set('organization', organization.toString());
+      httpParams.append('organization', organization.toString());
     }
     return this.httpClient.get<GeneratedInfographic>(`${this.rootService.serverUrl}${InfographicService.ROOT_PATH}/find/latest`, {params: httpParams});
   }
   range(from: Date, to: Date): Observable<GeneratedInfographic[]> {
     const httpParams: HttpParams = new HttpParams();
-    httpParams.set('from', from.toISOString());
-    httpParams.set('to', to.toISOString());
+    httpParams.append('from', from.toISOString());
+    httpParams.append('to', to.toISOString());
     return this.httpClient.get<GeneratedInfographic[]>(`${this.rootService.serverUrl}${InfographicService.ROOT_PATH}/range`, {params: httpParams});
   }
   getAllCreated(): Observable<GeneratedInfographic[]> {
