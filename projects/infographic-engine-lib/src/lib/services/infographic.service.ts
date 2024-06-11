@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
 })
 export class InfographicService {
 
-  private static readonly ROOT_PATH: string = '/infographic'
+  private static readonly ROOT_PATH: string = '/infographics'
 
   constructor(private rootService: InfographicEngineRootService, private httpClient: HttpClient) {
   }
@@ -30,22 +30,22 @@ export class InfographicService {
     form?: string,
     version?: number,
     createdBy?: string,
-    organization?: number,
+    organization?: string,
     from?: Date,
     to?: Date
   ): Observable<GeneratedInfographic[]> {
     let httpParams: HttpParams = new HttpParams();
     if (form) {
-      httpParams = httpParams.append('form', form);
+      httpParams = httpParams.append('form', encodeURIComponent(form));
     }
     if (version) {
-      httpParams = httpParams.append('version', version.toString());
+      httpParams = httpParams.append('version', encodeURIComponent(version));
     }
     if (createdBy) {
-      httpParams = httpParams.append('createdBy', createdBy);
+      httpParams = httpParams.append('createdBy', encodeURIComponent(createdBy));
     }
     if (organization) {
-      httpParams = httpParams.append('organization', organization.toString());
+      httpParams = httpParams.append('organization', encodeURIComponent(organization));
     }
     if (from) {
       httpParams = httpParams.append('from', from.toISOString());
@@ -60,20 +60,20 @@ export class InfographicService {
     form?: string,
     version?: number,
     createdBy?: string,
-    organization?: number,
+    organization?: string,
   ): Observable<GeneratedInfographic> {
     let httpParams: HttpParams = new HttpParams();
     if (form) {
-      httpParams = httpParams.append('form', form);
+      httpParams = httpParams.append('form', encodeURIComponent(form));
     }
     if (version) {
-      httpParams = httpParams.append('version', version.toString());
+      httpParams = httpParams.append('version', encodeURIComponent(version));
     }
     if (createdBy) {
-      httpParams = httpParams.append('createdBy', createdBy);
+      httpParams = httpParams.append('createdBy', encodeURIComponent(createdBy));
     }
     if (organization) {
-      httpParams = httpParams.append('organization', organization.toString());
+      httpParams = httpParams.append('organization', encodeURIComponent(organization));
     }
     return this.httpClient.get<GeneratedInfographic>(`${this.rootService.serverUrl}${InfographicService.ROOT_PATH}/find/latest`, {params: httpParams});
   }
