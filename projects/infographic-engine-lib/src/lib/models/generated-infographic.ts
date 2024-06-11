@@ -4,7 +4,7 @@ export class GeneratedInfographic extends ElementDto {
   override id: number;
   formName: string;
   formVersion: number;
-  organizationId: number;
+  organizationId: string;
   svgContents: string[];
 
   public static override clone(from: GeneratedInfographic): GeneratedInfographic {
