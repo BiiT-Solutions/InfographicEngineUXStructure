@@ -36,16 +36,16 @@ export class InfographicService {
   ): Observable<GeneratedInfographic[]> {
     let httpParams: HttpParams = new HttpParams();
     if (form) {
-      httpParams = httpParams.append('form', encodeURIComponent(form));
+      httpParams = httpParams.append('form', form.toString());
     }
     if (version) {
-      httpParams = httpParams.append('version', encodeURIComponent(version));
+      httpParams = httpParams.append('version', version.toString());
     }
     if (createdBy) {
-      httpParams = httpParams.append('createdBy', encodeURIComponent(createdBy));
+      httpParams = httpParams.append('createdBy', createdBy.toString());
     }
     if (organization) {
-      httpParams = httpParams.append('organization', encodeURIComponent(organization));
+      httpParams = httpParams.append('organization', organization.toString());
     }
     if (from) {
       httpParams = httpParams.append('from', from.toISOString());
@@ -64,16 +64,16 @@ export class InfographicService {
   ): Observable<GeneratedInfographic> {
     let httpParams: HttpParams = new HttpParams();
     if (form) {
-      httpParams = httpParams.append('form', encodeURIComponent(form));
+      httpParams = httpParams.append('form', form.toString());
     }
     if (version) {
-      httpParams = httpParams.append('version', encodeURIComponent(version));
+      httpParams = httpParams.append('version', version.toString());
     }
     if (createdBy) {
-      httpParams = httpParams.append('createdBy', encodeURIComponent(createdBy));
+      httpParams = httpParams.append('createdBy', createdBy.toString());
     }
     if (organization) {
-      httpParams = httpParams.append('organization', encodeURIComponent(organization));
+      httpParams = httpParams.append('organization', organization.toString());
     }
     return this.httpClient.get<GeneratedInfographic>(`${this.rootService.serverUrl}${InfographicService.ROOT_PATH}/find/latest`, {params: httpParams});
   }
