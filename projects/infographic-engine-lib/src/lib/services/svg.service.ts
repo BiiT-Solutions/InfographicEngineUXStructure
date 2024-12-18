@@ -23,7 +23,7 @@ export class SvgService {
   getSvgPageFromDroolsPlain(input: any, page: number): Observable<string> {
     return this.httpClient.post<string>(`${this.rootService.serverUrl}${SvgService.ROOT_PATH}/create/drools/plain/page/${page}`, input);
   }
-  getPdf(forms: {form:string, createdBy?:string, version?:number, organization?:string}[]): Observable<Blob> {
+  getPdf(forms: {form:string, createdBy?:string, version?:number, organization?:string, team?:string}[]): Observable<Blob> {
     return this.httpClient.post<Blob>(`${this.rootService.serverUrl}${SvgService.ROOT_PATH}/find/latest/pdf`, forms,
       {
         responseType: 'blob' as 'json',
