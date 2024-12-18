@@ -60,8 +60,8 @@ export class InfographicService {
     form?: string,
     version?: number,
     createdBy?: string,
-    unit?: string,
     organization?: string,
+    unit?: string
   ): Observable<GeneratedInfographic> {
     let httpParams: HttpParams = new HttpParams();
     if (form) {
