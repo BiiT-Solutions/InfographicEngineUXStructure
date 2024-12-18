@@ -60,6 +60,7 @@ export class InfographicService {
     form?: string,
     version?: number,
     createdBy?: string,
+    unit?: string,
     organization?: string,
   ): Observable<GeneratedInfographic> {
     let httpParams: HttpParams = new HttpParams();
@@ -71,6 +72,9 @@ export class InfographicService {
     }
     if (createdBy) {
       httpParams = httpParams.append('createdBy', createdBy.toString());
+    }
+    if (unit) {
+      httpParams = httpParams.append('unit', unit.toString());
     }
     if (organization) {
       httpParams = httpParams.append('organization', organization.toString());
