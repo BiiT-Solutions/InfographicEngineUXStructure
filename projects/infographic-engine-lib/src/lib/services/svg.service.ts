@@ -11,17 +11,24 @@ export class SvgService {
   private static readonly ROOT_PATH: string = '/svg'
   constructor(private rootService: InfographicEngineRootService, private httpClient: HttpClient) { }
 
-  create(element: Element): Observable<string[]> {
-    return this.httpClient.post<string[]>(`${this.rootService.serverUrl}${SvgService.ROOT_PATH}/create`, element);
+  getSvg(input: any): Observable<string[]> {
+    return this.httpClient.post<string[]>(`${this.rootService.serverUrl}${SvgService.ROOT_PATH}/create`, input);
   }
-
-  createDrools(input: any): Observable<string[]> {
+  getSvgFromDrools(input: any): Observable<string[]> {
     return this.httpClient.post<string[]>(`${this.rootService.serverUrl}${SvgService.ROOT_PATH}/create/drools`, input);
   }
-  createDroolsPlain(input: any): Observable<string> {
+  getSvgFromDroolsPlain(input: any): Observable<string> {
     return this.httpClient.post<string>(`${this.rootService.serverUrl}${SvgService.ROOT_PATH}/create/drools/plain`, input);
   }
-  createFirstDroolsPlain(input: any): Observable<string> {
-    return this.httpClient.post<string>(`${this.rootService.serverUrl}${SvgService.ROOT_PATH}/create/drools/plain/first`, input);
+  getSvgPageFromDroolsPlain(input: any, page: number): Observable<string> {
+    return this.httpClient.post<string>(`${this.rootService.serverUrl}${SvgService.ROOT_PATH}/create/drools/plain/page/${page}`, input);
+  }
+  getPdf(forms: {form:string, createdBy?:string, version?:number, organization?:string, unit?:string}[]): Observable<Blob> {
+    return this.httpClient.post<Blob>(`${this.rootService.serverUrl}${SvgService.ROOT_PATH}/find/latest/pdf`, forms,
+      {
+        responseType: 'blob' as 'json',
+        observe: 'body',
+        headers: {'Content-Type': 'application/json'}
+      });
   }
 }

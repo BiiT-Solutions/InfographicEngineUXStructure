@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
 })
 export class InfographicService {
 
-  private static readonly ROOT_PATH: string = '/infographic'
+  private static readonly ROOT_PATH: string = '/infographics'
 
   constructor(private rootService: InfographicEngineRootService, private httpClient: HttpClient) {
   }
@@ -30,19 +30,19 @@ export class InfographicService {
     form?: string,
     version?: number,
     createdBy?: string,
-    organization?: number,
+    organization?: string,
     from?: Date,
     to?: Date
   ): Observable<GeneratedInfographic[]> {
     let httpParams: HttpParams = new HttpParams();
     if (form) {
-      httpParams = httpParams.append('form', form);
+      httpParams = httpParams.append('form', form.toString());
     }
     if (version) {
       httpParams = httpParams.append('version', version.toString());
     }
     if (createdBy) {
-      httpParams = httpParams.append('createdBy', createdBy);
+      httpParams = httpParams.append('createdBy', createdBy.toString());
     }
     if (organization) {
       httpParams = httpParams.append('organization', organization.toString());
@@ -60,17 +60,21 @@ export class InfographicService {
     form?: string,
     version?: number,
     createdBy?: string,
-    organization?: number,
+    organization?: string,
+    unit?: string
   ): Observable<GeneratedInfographic> {
     let httpParams: HttpParams = new HttpParams();
     if (form) {
-      httpParams = httpParams.append('form', form);
+      httpParams = httpParams.append('form', form.toString());
     }
     if (version) {
       httpParams = httpParams.append('version', version.toString());
     }
     if (createdBy) {
-      httpParams = httpParams.append('createdBy', createdBy);
+      httpParams = httpParams.append('createdBy', createdBy.toString());
+    }
+    if (unit) {
+      httpParams = httpParams.append('unit', unit.toString());
     }
     if (organization) {
       httpParams = httpParams.append('organization', organization.toString());
