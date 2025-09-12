@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {InfographicEngineRootService} from "./infographic-engine-root.service";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
@@ -9,22 +9,52 @@ import {Observable} from "rxjs";
 export class SvgService {
 
   private static readonly ROOT_PATH: string = '/svg'
-  constructor(private rootService: InfographicEngineRootService, private httpClient: HttpClient) { }
+
+  constructor(private rootService: InfographicEngineRootService, private httpClient: HttpClient) {
+  }
 
   getSvg(input: any): Observable<string[]> {
     return this.httpClient.post<string[]>(`${this.rootService.serverUrl}${SvgService.ROOT_PATH}/create`, input);
   }
+
   getSvgFromDrools(input: any): Observable<string[]> {
     return this.httpClient.post<string[]>(`${this.rootService.serverUrl}${SvgService.ROOT_PATH}/create/drools`, input);
   }
+
   getSvgFromDroolsPlain(input: any): Observable<string> {
     return this.httpClient.post<string>(`${this.rootService.serverUrl}${SvgService.ROOT_PATH}/create/drools/plain`, input);
   }
+
   getSvgPageFromDroolsPlain(input: any, page: number): Observable<string> {
     return this.httpClient.post<string>(`${this.rootService.serverUrl}${SvgService.ROOT_PATH}/create/drools/plain/page/${page}`, input);
   }
-  getPdf(forms: {form:string, createdBy?:string, version?:number, organization?:string, unit?:string}[]): Observable<Blob> {
+
+  getPdf(forms: {
+    form: string,
+    createdBy?: string,
+    version?: number,
+    organization?: string,
+    unit?: string
+  }[]): Observable<Blob> {
     return this.httpClient.post<Blob>(`${this.rootService.serverUrl}${SvgService.ROOT_PATH}/find/latest/pdf`, forms,
+      {
+        responseType: 'blob' as 'json',
+        observe: 'body',
+        headers: {'Content-Type': 'application/json'}
+      });
+  }
+
+  getPdfFromDrools(input: any): Observable<Blob> {
+    return this.httpClient.post<Blob>(`${this.rootService.serverUrl}${SvgService.ROOT_PATH}/create/drools/pdf`, input,
+      {
+        responseType: 'blob' as 'json',
+        observe: 'body',
+        headers: {'Content-Type': 'application/json'}
+      });
+  }
+
+  getPdfFromDroolsPlain(input: any): Observable<Blob> {
+    return this.httpClient.post<Blob>(`${this.rootService.serverUrl}${SvgService.ROOT_PATH}/create/drools/plain/pdf`, input,
       {
         responseType: 'blob' as 'json',
         observe: 'body',
