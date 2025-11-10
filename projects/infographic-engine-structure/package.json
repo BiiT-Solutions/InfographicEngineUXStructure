@@ -1,6 +1,6 @@
 {
   "name": "@biit-solutions/infographic-engine-structure",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "peerDependencies": {
     "@angular/common": "v15-lts",
     "@angular/core": "v15-lts"
