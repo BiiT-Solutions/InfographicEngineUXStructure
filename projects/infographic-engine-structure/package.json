@@ -1,5 +1,5 @@
 {
-  "name": "infographic-engine-lib",
+  "name": "@biit-solutions/infographic-engine-structure",
   "version": "0.0.22",
   "peerDependencies": {
     "@angular/common": "v15-lts",

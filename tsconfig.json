@@ -10,8 +10,8 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "paths": {
-      "infographic-engine-lib": [
-        "dist/infographic-engine-lib"
+      "infographic-engine-structure": [
+        "dist/infographic-engine-structure"
       ]
     },
     "noImplicitReturns": true,
